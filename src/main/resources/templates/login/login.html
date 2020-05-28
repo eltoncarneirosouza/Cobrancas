@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+<script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
+<title>Controle-Inadimplentes</title>
+<link rel="stylesheet"
+	th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}" />
+<link rel="stylesheet"
+	th:href="@{/webjars/font-awesome/css/font-awesome.min.css}"></link>
+<style type="text/css">
+#interna {
+	margin: 0 auto;
+	width: 50%;
+	margin-top: 10px;
+}
+</style>
+</head>
+<body id="interna" class="container">
+	<br>
+	<h4>
+		<a><i class="fa fa-superpowers" aria-hidden="true"></i> <em>Controle
+				Inadimplentes</em></a>
+	</h4>
+	<form th:action="@{/login}" method="post" class="form-signin">
+		<div class="row">
+			<div class="form-group col-md-6">
+				<input type="text" class="form-control" required
+					placeholder="E-mail" name="email" id="email">
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group col-md-6">
+				<input type="password" required class="form-control"
+					placeholder="Senha" name="senha" id="senha">
+			</div>
+
+		</div>
+		<button type="submit" class="btn btn-primary">
+			<i class="fa fa-expeditedssl" aria-hidden="true"></i> Login
+		</button>
+		<div class="row">
+			<div class="col-md-9">
+				<div class="alert alert-danger" role="alert" th:if="${param.error}">
+					<label>Problemas para logar no sistema!</label>
+					<button type="button" class="close" data-dismiss="alert"
+						aria-label="close">&times;</button>
+				</div>
+			</div>
+		</div>
+	</form>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="ico"
+	href="../../images/Custom-Icon-Design-Mono-Business-2-Coffee.ico">
+
+<title>Controle-Inadimplentes</title>
+
+<!-- Bootstrap core CSS -->
+<link th:rel="stylesheet"
+	th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}" />
+<link th:rel="stylesheet"
+	th:href="@{/webjars/font-awesome/css/font-awesome.min.css}"></link>
+
+<!-- Bootstrap core JS -->
+<script th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
+<script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+
+<!-- Custom styles for this template -->
+<link href="../css/dashboard.css" rel="stylesheet">
+</head>
+
+<body>
+	<div th:replace="layout/navbar :: navbar"></div>
+
+	<div class="container-fluid">
+		<div class="row">
+			<div th:replace="layout/menu :: menu"></div>
+
+			<div class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+				<div th:replace="layout/conteudo :: conteudo"></div>
+
+				<canvas class="my-4" id="myChart" width="900" height="380"></canvas>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
+
+	<!-- Icons -->
+	<script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+	<script>
+		feather.replace()
+	</script>
+</body>
+</html>

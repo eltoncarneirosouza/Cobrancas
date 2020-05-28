@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="grid">
+	<div class="container-fluid">
+		<table class="table table-hover">
+			<thead class="thead-dark">
+				<tr>
+					<th>ID</th>
+					<th>Nome</th>
+					<th>E-mail</th>
+					<th>Ativo</th>
+					<th>Perfil</th>
+					<th style="text-align: right;">Opções</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="usuario : ${usuarios}">
+					<td><a th:text="${usuario.id}"></a></td>
+					<td><a th:text="${usuario.nome}"></a></td>
+					<td><a th:text="${usuario.email}"></a></td>
+					<td><a th:text="${usuario.ativo}"></a></td>
+					<td><a th:text="${usuario.perfil}"></a></td>
+					<td style="text-align: right;"><a class="btn btn-primary" data-toggle="tooltip"
+						data-placement="top" title="Edição do registro"
+						th:href="@{/usuario/editar/{id}(id = ${usuario.id})}"><i
+							class="fa  fa-fw  fa-edit"></i>Editar</a> <a class="btn btn-danger"
+						data-toggle="tooltip" data-placement="top"
+						title="Deletar o registro"
+						th:href="@{/usuario/excluir/{id}(id = ${usuario.id})}"><i
+							class="fa  fa-fw  fa-trash"></i>Deletar</a></td>
+				</tr>
+			</tbody>
+		</table>
+
+		<div class="pagination-div">
+			<span th:if="${usuarios.hasPrevious()}"> <a
+				th:href="@{/usuario(page=${usuarios.number-1},size=${usuarios.size})}">Anterior </a>
+			</span>
+			<th:block
+				th:each="i: ${#numbers.sequence(0, usuarios.totalPages - 1)}">
+				<span th:if="${usuarios.number == i}" class="selected">[[${i}+1]]</span>
+				<span th:unless="${usuarios.number == i}"> <a
+					th:href="@{/usuario(page=${i},size=${usuarios.size})}">[[${i}+1]]</a>
+				</span>
+			</th:block>
+			<span th:if="${usuarios.hasNext()}"> <a
+				th:href="@{/usuario(page=${usuarios.number+1},size=${usuarios.size})}">Próximo </a>
+			</span>
+		</div>
+	</div>
+</div>
+</html>
