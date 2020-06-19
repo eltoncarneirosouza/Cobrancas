@@ -43,5 +43,6 @@ public class Perfil implements GrantedAuthority {
 	public String toString() {
 		return this.descricao;
 	}
-	
+
+		
 }

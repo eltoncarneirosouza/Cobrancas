@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.cobranca.CarteiraCobranca.dto.LogadoDTO;
 import com.cobranca.CarteiraCobranca.dto.UsuarioDTO;
 import com.cobranca.CarteiraCobranca.form.UsuarioForm;
 import com.cobranca.CarteiraCobranca.model.Perfil;
@@ -37,11 +38,13 @@ public class UsuarioController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView lista(
-			@PageableDefault(direction = Direction.DESC, page = 0, size = 4, sort = "id") Pageable pageable) {
+			@PageableDefault(direction = Direction.DESC, page = 0, size = 5, sort = "id") Pageable pageable) {
+		LogadoDTO logados = UsuarioService.preencherLogados();
 		Page<Usuario> page = usuarioRepository.findAll(pageable);
 		Page<UsuarioDTO> pageDTO = UsuarioDTO.converter(page);
 		ModelAndView view = new ModelAndView();
 		view.setViewName("usuario/usuario");
+		view.addObject("logados", logados); 
 		view.addObject("usuario", new UsuarioForm());
 		view.addObject("usuarios", pageDTO);
 		return view;

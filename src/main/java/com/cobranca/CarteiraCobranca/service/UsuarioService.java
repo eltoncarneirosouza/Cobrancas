@@ -3,9 +3,11 @@ package com.cobranca.CarteiraCobranca.service;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.cobranca.CarteiraCobranca.dto.LogadoDTO;
 import com.cobranca.CarteiraCobranca.model.Usuario;
 import com.cobranca.CarteiraCobranca.repository.UsuarioRepository;
 
@@ -31,5 +33,10 @@ public class UsuarioService {
 			usuario.setSenha(senhaEncoder.encode(usuario.getSenha()));
 			usuarioRepository.save(usuario);
 		}
+	}
+	
+	public static LogadoDTO preencherLogados() {
+		Usuario usuario = (Usuario) SecurityContextHolder.getContext().getAuthentication().getPrincipal();		
+		return new LogadoDTO(usuario);		
 	}
 }
