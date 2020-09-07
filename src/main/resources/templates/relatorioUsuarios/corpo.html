@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="corpo">
+	<form th:action="@{/relUsuarios}" method="post" target="_blanck">
+		<div class="form-row">
+			<div class="page-header">
+				<div class="container-fluid">
+					<h3>Relatório dos Usuários</h3>
+				</div>
+			</div>
+		</div>
+		<br>
+		<div class="form-row">
+			<button type="submit" class="btn btn-success">
+				<i class="fa fa-floppy-o" aria-hidden="true"></i> Gerar Relatório
+			</button>
+		</div>
+	</form>
+</div>
+</html>
